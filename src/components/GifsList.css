@@ -1,0 +1,18 @@
+.gifs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gifs-container__image {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  padding: 10px 0px;
+  width: 18.75rem;
+  height: 18.75rem;
+}

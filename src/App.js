@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import GifsList from './components/GifsList';
+import SearchBar from './components/SearchBar';
+
 import './App.css';
+import giphy from './apis/giphy';
+
+const KEY = 'og6TjIlZV6HMhIFiXNXHFxJySKhD0aeu';
 
 function App() {
+  const [gifs, setGifs] = useState([]);
+
+  const onTermSubmit = async (term) => {
+    const response = await giphy.get('/gifs/search', {
+      params: {
+        api_key: KEY,
+        limit: 12,
+        q: term,
+      },
+    });
+
+    setGifs(response.data.data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <SearchBar onFormSubmit={onTermSubmit} />
+      <GifsList gifs={gifs} />
     </div>
   );
 }
