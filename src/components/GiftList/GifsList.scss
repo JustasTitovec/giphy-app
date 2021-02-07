@@ -1,23 +1,23 @@
-.gifs-container {
+.images-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.gifs-container__image {
+.images-container__image {
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
 }
 
-.gifs-container {
+.images-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.gifs-container__welcome {
+.images-container__welcome {
   text-align: center;
 }
 

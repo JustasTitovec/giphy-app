@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './GifsList.css';
+import './GifsList.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -21,11 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const GifsList = ({ gifs }) => {
+const GifsList = ({ images, isLoading }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState({});
-  const [isLoading, setLoading] = useState(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -34,34 +33,39 @@ const GifsList = ({ gifs }) => {
   const selectGif = (gif) => {
     setOpen(true);
     setSelected(gif);
-    setLoading(false);
   };
 
   return (
-    <div className="gifs-container">
-      {gifs.map((gif) => {
-        return (
-          <div className="gifs-container__image" key={gif.id}>
-            <img
-              className="img"
-              src={gif.images.downsized_medium.url}
-              alt={gif.title}
-              onClick={() => selectGif(gif)}
-            />
-          </div>
-        );
-      })}
-
+    <div>
       {isLoading ? (
-        <div className="gifs-container__welcome">
+        <div className="images-container__welcome">
           <div style={{ color: 'white', padding: '20px' }}>
             Welcome to Giphy finder page
           </div>
           <img
             src="https://media.giphy.com/media/2sgDam8j8wQaMRzmIk/giphy.gif"
-            all="excited gog"
+            alt="Doggy"
           />
         </div>
+      ) : (
+        <div className="images-container">
+          {images.map((image) => {
+            return (
+              <div className="images-container__image" key={image?.id}>
+                <img
+                  className="img"
+                  src={image.images.downsized_medium.url}
+                  alt={image.title}
+                  onClick={() => selectGif(image)}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {!open ? (
+        <div></div>
       ) : (
         <Modal
           aria-labelledby="transition-modal-title"

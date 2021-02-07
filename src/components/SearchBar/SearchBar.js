@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './SearchBar.css';
-import SearchIcon from '@material-ui/icons/Search';
+import './SearchBar.scss';
 
 const SearchBar = ({ onFormSubmit }) => {
   const [term, setTerm] = useState('');
@@ -21,11 +20,11 @@ const SearchBar = ({ onFormSubmit }) => {
             value={term}
             type="text"
             placeholder="pages"
-            pattern="[a-zA-Z0-9]+"
+            pattern="[a-zA-Z0-9 ]+"
             required
           />
-          <div className="icon">
-            <SearchIcon />
+          <div onClick={onSubmit} className="icon">
+            <i class="fas fa-search"></i>
           </div>
         </div>
       </form>

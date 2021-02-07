@@ -19,12 +19,20 @@
   border: none;
   outline: none;
   width: 100%;
+
+  &[placeholder] {
+    font-size: 15px;
+    padding-left: 10px;
+  }
+}
+
+.fa-search {
+  font-size: 22px;
 }
 
 .icon {
   display: flex;
   align-items: center;
-  animation: 2s linear 0s infinite normal none running MANual;
   background-image: linear-gradient(
     45deg,
     rgb(153, 51, 255) 0%,
@@ -34,9 +42,5 @@
   padding: 8.5px 10px;
   color: white;
   transform: translateX(1px);
-}
-
-.input[placeholder] {
-  font-size: 15px;
-  padding-left: 10px;
+  cursor: pointer;
 }
