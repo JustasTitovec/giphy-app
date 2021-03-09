@@ -24,7 +24,7 @@ const SearchBar = ({ onFormSubmit }) => {
             required
           />
           <div onClick={onSubmit} className="icon">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </div>
         </div>
       </form>

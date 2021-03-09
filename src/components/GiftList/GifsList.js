@@ -36,7 +36,7 @@ const GifsList = ({ images, isLoading }) => {
   };
 
   return (
-    <div>
+    <div className="container">
       {isLoading ? (
         <div className="images-container__welcome">
           <div style={{ color: 'white', padding: '20px' }}>

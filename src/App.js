@@ -19,7 +19,9 @@ function App() {
     });
 
     setImages([...response.data.data]);
-    setLoading(false);
+    if (images.length === 0) {
+      setLoading(false);
+    }
   };
 
   const fetchData = async (term) => {
@@ -31,7 +33,13 @@ function App() {
       },
     });
 
-    setImages(images.concat(response.data.data));
+    setImages((images) => {
+      return [...images, response.data.data];
+    });
+
+    // setLoading(true);
+
+    // setImages(images.concat(response.data.data));
   };
 
   return (
